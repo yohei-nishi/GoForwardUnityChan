@@ -13,9 +13,6 @@ public class CubeController : MonoBehaviour
     // AudioSource（課題）
     private AudioSource audioSource;
 
-    // SEを入れる場所（課題）
-    public AudioClip se;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +40,7 @@ public class CubeController : MonoBehaviour
         if (collision.gameObject.tag == "CubeTag" || collision.gameObject.tag == "GroundTag")
         {
             //　SEを一回再生する
-            audioSource.PlayOneShot(se);
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }
