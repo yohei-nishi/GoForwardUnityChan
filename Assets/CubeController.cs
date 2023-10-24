@@ -10,10 +10,17 @@ public class CubeController : MonoBehaviour
     //消滅位置
     private float deadLine = -10;
 
+    // AudioSource（課題）
+    private AudioSource audioSource;
+
+    // SEを入れる場所（課題）
+    public AudioClip se;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // コンポーネントを取得（課題）
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +33,17 @@ public class CubeController : MonoBehaviour
         if (transform.position.x < this.deadLine)
         { 
             Destroy(gameObject);
+        }
+    }
+
+    //接触時に呼び出す処理（課題）
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // collisionのタグを認識
+        if (collision.gameObject.tag == "CubeTag" || collision.gameObject.tag == "GroundTag")
+        {
+            //　SEを一回再生する
+            audioSource.PlayOneShot(se);
         }
     }
 }
